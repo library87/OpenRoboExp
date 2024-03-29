@@ -79,6 +79,11 @@ You can set the config file under `speech2roboExp/config/infer.cfg`.
 You can specify the input audio file, the subject id and the output video file in `run_speech2roboExp_inference.py`.
 The subject id is in accordance with the VOCA set definition.
 
+We highly recommend you to play with the **gui**, which is a more interactive way to explore the results. You can run:
+```shell
+python run_speech2roboExp_gui.py
+```
+
 Note that now the rendering is for a human face mesh just for visualization. 
 We will release the actual robot mesh soon. 
 The generated results are sequences of blendshape coefficients where blendshape definition follows the ARKit convention, which can be used to drive the robot face.
