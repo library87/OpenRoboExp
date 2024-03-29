@@ -26,9 +26,11 @@ If you have any questions or suggestions, please feel free to [contact us](mailt
 <img src="assets/approach_overview.png" width="99%" alt="Speech-driven Robot Teaser">
 </div>
 
-Our approach is rooted in the principles of Linear Blend Skinning (LBS), which serves as the core representation guiding the design and motion synthesis of the robot's embodiment. This approach allows for the generation of highly realistic, real-time facial expressions from speech, significantly enhancing the robot's ability to replicate nuanced human expressions for natural interaction.
+Our approach is rooted in the principles of **Linear Blend Skinning (LBS)**, which serves as the core representation guiding the design and motion synthesis of the robot's embodiment. This approach allows for the generation of highly realistic, real-time facial expressions from speech, significantly enhancing the robot's ability to replicate nuanced human expressions for natural interaction.
 
-The complexities of facial biomechanics and the synthesis of responsive motion present significant challenges in this field. However, our skinning-centric approach, which informs the actuation topology and enables human expression retargeting, is designed to overcome these challenges. For motion synthesis, our model is capable to generate realistic facial expressions in real-time at around 4000fps on a single Nvidia RTX 4090, making it suitable for real-time human-robot interaction.
+The complexities of facial biomechanics and the synthesis of responsive motion present significant challenges in this field. However, our **skinning-centric approach**, which informs the actuation topology and enables human expression retargeting, is designed to overcome these challenges. For motion synthesis, our model is capable to generate realistic facial expressions in real-time at >4000fps on a single Nvidia RTX 4090, making it suitable for real-time human-robot interaction.
+
+**Compatibility Notice:** The current release of our codebase is versatile and adaptable. It is designed to work seamlessly with both animatronic robots and virtual characters. If your interest lies in animating virtual characters, rest assured that this codebase is fully equipped to handle that as well. This flexibility allows for a wide range of applications and encourages innovation in various fields.
 
 See more details in our [paper](https://arxiv.org/pdf/2403.12670.pdf) and [project page](https://library87.github.io/animatronic-face-iros24).
 ## Installation
@@ -56,7 +58,7 @@ sudo apt install ffmpeg
 
 3. Install third-party 3D renderer.
 ```shell
-cd render_utils
+cd utils/render_utils
 python setup.py build_ext --inplace
 ```
 
@@ -65,11 +67,11 @@ We provide a data preparation pipeline using the [VOCA](https://voca.is.tue.mpg.
 [coming soon]
 
 ## Running
-To train your own model, you first need to set the config file under `speech2roboExp/config/train.cfg`. Then you can run:
+To **train** your own model, you first need to set the config file under `speech2roboExp/config/train.cfg`. Then you can run:
 ```shell
 python run_speech2roboExp_train.py
 ```
-For inference, you can run:
+For **inference**, you can run:
 ```shell
 python run_speech2roboExp_inference.py
 ```
@@ -82,6 +84,7 @@ We will release the actual robot mesh soon.
 The generated results are sequences of blendshape coefficients where blendshape definition follows the ARKit convention, which can be used to drive the robot face.
 
 ## BibTex
+If you find this work useful, please consider citing:
 ```bibtex
 @article{li2024driving,
   title={Driving Animatronic Robot Facial Expression From Speech},

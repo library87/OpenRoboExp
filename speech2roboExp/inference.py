@@ -50,7 +50,7 @@ def filter_blendshape(blendshape_seq: np.ndarray,
     Returns:
         filtered_blendshape_seq: filtered arkit blendshape coefficient sequence, [seq_len, blendshape_dim]
     """
-    filtered_blendshape_seq = butter_lowpass_filter(blendshape_seq, cutoff=7, fps=fps, order=5)
+    filtered_blendshape_seq = butter_lowpass_filter(blendshape_seq, cutoff=6.5, fps=fps, order=5)
 
     return filtered_blendshape_seq
 
@@ -80,7 +80,8 @@ def inference(audio_filepath: str,
               art_model: ArticulationModel,
               speech_window_size: int,
               neutral_vert: np.ndarray,
-              device: torch.device) -> (np.ndarray, np.ndarray):
+              device: torch.device,
+              flag_output_blendshape_only: bool = False) -> (np.ndarray, np.ndarray):
     """
     Run inference, input an audio file and output a sequence of vertices
     Args:
@@ -92,6 +93,7 @@ def inference(audio_filepath: str,
         speech_window_size: sliding window size for speech features
         neutral_vert: neutral vertex, [3, num_vertex]
         device: device
+        flag_output_blendshape_only: flag to output blendshape only
     Returns:
         blendshape_seq: arkit blendshape coefficient sequence, [seq_len, blendshape_dim]
         vert_seq: vertex sequence, [seq_len, 3, num_vertex]
@@ -102,6 +104,9 @@ def inference(audio_filepath: str,
 
     # filter blendshape coefficients
     blendshape_seq = filter_blendshape(blendshape_seq)
+
+    if flag_output_blendshape_only:
+        return blendshape_seq, None
 
     # compute vertex offset
     vert_offset_seq = decode_vert_offset(blendshape_seq, art_model, device)
