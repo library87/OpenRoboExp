@@ -64,7 +64,8 @@ python setup.py build_ext --inplace
 
 ## Human Demonstration Data
 We provide a data preparation pipeline using the [VOCA](https://voca.is.tue.mpg.de/) dataset, which consists of 3D human demonstrations. The dataset includes synchronized audio and 3D scans of human facial expressions, which can be used to train the robot to generate lifelike expressions.
-[coming soon]
+
+For more details on how to prepare the VOCA dataset for use in this project, please refer to the [readme](speech2roboExp/datasets/prepare_vocaset/readme.md) in the `speech2roboExp/datasets/prepare_vocaset` directory.
 
 ## Running
 To **train** your own model, you first need to set the config file under `speech2roboExp/config/train.cfg`. Then you can run:
